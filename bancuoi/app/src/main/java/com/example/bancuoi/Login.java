@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import static com.example.bancuoi.Service_API.BASE_URL;
 
 
 public class Login extends AppCompatActivity {
@@ -33,7 +33,7 @@ public class Login extends AppCompatActivity {
     private TextInputEditText txtUsername, txtPassWord;
     private List<Users> _listUser = new ArrayList<>();
     public static final String MY_PREFS_NAME = "MyPrefsFile";
-    private String url = "http://192.168.1.12/thitracnghiem/api/users";
+    private String url = BASE_URL+"/users";
     SharedPreferences sharedPreferences;
     ConstraintLayout loginForm;
 
@@ -60,9 +60,9 @@ public class Login extends AppCompatActivity {
                 String passWord = txtPassWord.getText().toString().trim();
 
                 // rat vai bo ngoai ham click, lay luon đi bỏ nó ở ngoai sao no lấy dc data
-                String url = "http://192.168.1.12/thitracnghiem/api/users?user=" + userName + "&pass=" + passWord;
+                String url1 = url+"?user=" + userName + "&pass=" + passWord;
                 RequestQueue queue = Volley.newRequestQueue(Login.this);
-                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url1, null,
                         new Response.Listener<JSONArray>() {
                             @Override
                             public void onResponse(JSONArray response) {

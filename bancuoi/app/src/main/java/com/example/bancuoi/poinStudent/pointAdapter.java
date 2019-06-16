@@ -56,8 +56,8 @@ public class pointAdapter extends RecyclerView.Adapter<pointAdapter.PointHolder>
         public PointHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtmonhoc=(TextView)itemView.findViewById(R.id.txtNameMonHoc);
-            imgHinhanh=(ImageView)itemView.findViewById(R.id.imgMonhoc);
+            txtmonhoc=(TextView)itemView.findViewById(R.id.txtNameBoDe);
+            imgHinhanh=(ImageView)itemView.findViewById(R.id.imgBoDeThi);
         }
     }
 

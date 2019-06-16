@@ -1,5 +1,6 @@
-package com.example.bancuoi;
+package com.example.bancuoi.exam;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -8,6 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.example.bancuoi.Model.DeThi_Model;
+import com.example.bancuoi.R;
+import com.example.bancuoi.Service_API;
+import com.example.bancuoi.exam.Dethi_Adapter;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.List;
@@ -18,11 +22,14 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.bancuoi.Login.MY_PREFS_NAME;
 import static com.example.bancuoi.Service_API.BASE_URL;
 
 public class DeThiActivity extends AppCompatActivity {
     private CompositeDisposable mCompositeDisposable;
     private RecyclerView recyclerView;
+    SharedPreferences prefs;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +39,13 @@ public class DeThiActivity extends AppCompatActivity {
 
         findViewById();
         setRCV();
-        loadJSONDeThi(1);
+        getSession();
+        loadJSONDeThi(id);
     }
-
+    private void getSession() {
+        prefs = this.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        id= prefs.getInt("MA_DT",0);
+    }
     private void findViewById() {
         recyclerView = (RecyclerView)findViewById(R.id.rcvDeThi);
     }
@@ -46,7 +57,6 @@ public class DeThiActivity extends AppCompatActivity {
     }
 
     private void loadJSONDeThi(int id) {
-
         Service_API requestInterface = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

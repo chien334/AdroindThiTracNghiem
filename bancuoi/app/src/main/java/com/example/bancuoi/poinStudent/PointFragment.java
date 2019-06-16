@@ -31,13 +31,14 @@ import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.bancuoi.Login.MY_PREFS_NAME;
+import static com.example.bancuoi.Service_API.BASE_URL;
 
 public class PointFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<monHoc> _liMonHoc = new ArrayList<>();
     private View v;
     private  int id;
-    private String url="http://192.168.1.12/thitracnghiem/api/examTest/";
+    private String url=BASE_URL+"examTest/";
     SharedPreferences prefs;
 
     @Nullable
@@ -97,7 +98,5 @@ public class PointFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(new pointAdapter(getActivity(),_liMonHoc));
     }
-    // nên code ro rang ntn, sau nay bao tri code hoac pha trien se de hon
-    // neu trinh tot hon thi tim hieu mo hinh MVVM day la mo hinh chuan khi di lam o cty ngoai
 
 }

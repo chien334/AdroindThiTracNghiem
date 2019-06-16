@@ -1,4 +1,4 @@
-package com.example.bancuoi;
+package com.example.bancuoi.exam;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.bancuoi.Model.DeThi_Model;
+import com.example.bancuoi.R;
 
 import java.util.List;
 

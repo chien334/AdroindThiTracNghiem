@@ -38,17 +38,14 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamHolder>{
     @Override
     public void onBindViewHolder(@NonNull ExamHolder examHolder, int i) {
         examHolder.txtmonhoc.setText(monHocs.get(i).getTenMonHoc());
-//        Glide.with(context)
-//                .load(monHocs.get(i).getHinhAnh())
-//                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-//                .into(examHolder.imgHinhanh);
+        examHolder.imgHinhanh.setImageResource(R.drawable.hinhanh);
 
         examHolder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
-                if(pos == 1)
+                if(pos >= 0)
                 {
-                    context.startActivity(new Intent(context, Main2Activity.class));
+                    context.startActivity(new Intent(context, BoDeThiActivity.class));
                 }
                 else
                 {
@@ -73,8 +70,8 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamHolder>{
 
         public ExamHolder(@NonNull View itemView) {
             super(itemView);
-                txtmonhoc=(TextView)itemView.findViewById(R.id.txtNameMonHoc);
-                imgHinhanh=(ImageView)itemView.findViewById(R.id.imgMonhoc);
+                txtmonhoc=(TextView)itemView.findViewById(R.id.txtNameBoDe);
+                imgHinhanh=(ImageView)itemView.findViewById(R.id.imgBoDeThi);
                 constraintLayout=(ConstraintLayout)itemView.findViewById(R.id.constraintItem);
                 itemView.setOnClickListener(this);
         }
