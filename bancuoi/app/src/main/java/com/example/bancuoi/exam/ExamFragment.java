@@ -32,8 +32,7 @@ public class ExamFragment extends Fragment{
     private RecyclerView recyclerView;
     private List<monHoc> _liMonHoc = new ArrayList<>();
     private View v;
-    private String url="https://api.github.com/users";
-    private ExamAdapter adapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,6 +47,7 @@ public class ExamFragment extends Fragment{
 
     private void loadJson() {
         RequestQueue queue= Volley.newRequestQueue(getActivity());
+        String url = "https://api.github.com/users";
         JsonArrayRequest jsonArrayRequest= new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -84,6 +84,7 @@ public class ExamFragment extends Fragment{
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setItemViewCacheSize(20);
         recyclerView.setAdapter(new ExamAdapter(getActivity(),_liMonHoc));
     }
 

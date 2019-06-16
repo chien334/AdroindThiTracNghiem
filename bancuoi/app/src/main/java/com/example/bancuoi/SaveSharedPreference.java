@@ -30,4 +30,6 @@ public class SaveSharedPreference {
     public static boolean getLoggedStatus(Context context) {
         return getPreferences(context).getBoolean(LOGGED_IN_PREF, false);
     }
+
+
 }

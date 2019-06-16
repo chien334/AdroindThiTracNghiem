@@ -59,7 +59,7 @@ public class PointFragment extends Fragment {
     }
 
     private void findViewById() {
-        recyclerView= (RecyclerView) v.findViewById(R.id.rvPoint);
+        recyclerView = (RecyclerView) v.findViewById(R.id.rvPoint);
     }
     private void loadJson() {
         getSession();
