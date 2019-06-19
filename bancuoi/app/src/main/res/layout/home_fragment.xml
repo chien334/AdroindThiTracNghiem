@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thi trắc nghiêm Online"
+        android:text="Thi trắc nghiệm Online"
         android:id="@+id/textView2"
         android:textColor="#6939BB"
         android:textSize="30dp"

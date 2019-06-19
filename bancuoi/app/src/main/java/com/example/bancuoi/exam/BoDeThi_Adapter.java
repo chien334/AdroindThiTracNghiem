@@ -21,13 +21,10 @@ import com.example.bancuoi.R;
 
 import java.util.List;
 
-import static android.content.Context.MODE_PRIVATE;
-import static com.example.bancuoi.Login.MY_PREFS_NAME;
 
 public class BoDeThi_Adapter extends RecyclerView.Adapter<BoDeThi_Adapter.ViewHolder> {
     private Context mContext;
     private List<BoDeThi_Model> list;
-    SharedPreferences prefs;
     public BoDeThi_Adapter(List<BoDeThi_Model> _list, Context context) {
         this.list = _list;
         this.mContext = context;
@@ -50,7 +47,9 @@ public class BoDeThi_Adapter extends RecyclerView.Adapter<BoDeThi_Adapter.ViewHo
             public void onItemClick(View v, int pos) {
                 if(pos >= 0)
                 {
-                    mContext.startActivity(new Intent(mContext,DeThiActivity.class));
+                    Intent intent = new Intent(mContext,DeThiActivity.class);
+                    intent.putExtra("MA_DE",list.get(i).getMade());
+                    mContext.startActivity(intent);
                 }
                 else
                 {

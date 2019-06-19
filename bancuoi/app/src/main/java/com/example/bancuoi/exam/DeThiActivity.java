@@ -1,5 +1,6 @@
 package com.example.bancuoi.exam;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,8 +29,8 @@ import static com.example.bancuoi.Service_API.BASE_URL;
 public class DeThiActivity extends AppCompatActivity {
     private CompositeDisposable mCompositeDisposable;
     private RecyclerView recyclerView;
-    SharedPreferences prefs;
-    private int id;
+    //SharedPreferences prefs;
+    private int made;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +41,14 @@ public class DeThiActivity extends AppCompatActivity {
         findViewById();
         setRCV();
         getSession();
-        loadJSONDeThi(id);
+        loadJSONDeThi(made);
     }
     private void getSession() {
-        prefs = this.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        id= prefs.getInt("MA_DT",0);
+        Intent intent = getIntent();
+        made = intent.getIntExtra("MA_DE",0);
+//        SharedPreferences.Editor editor = prefs.edit();
+ //       editor.putInt("MA_DE",made);
+ //       editor.apply();
     }
     private void findViewById() {
         recyclerView = (RecyclerView)findViewById(R.id.rcvDeThi);
@@ -76,7 +80,6 @@ public class DeThiActivity extends AppCompatActivity {
         recyclerView.setAdapter(dethi_adapter);
 
     }
-
     /**
      * Trả về lỗi
      * @param error (Lỗi)

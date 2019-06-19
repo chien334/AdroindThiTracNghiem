@@ -6,12 +6,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".exam.DeThiActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thời gian :"
+        android:textSize="24sp"
+        android:layout_marginRight="10dp"/>
+    <TextView
+        android:id="@+id/txtsophutlambai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="45"
+        android:textSize="24sp"
+        android:padding="5dp"
+        android:layout_marginRight="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"
+        android:textSize="24sp"
+        android:padding="5dp"
+        android:layout_marginRight="10dp"/>
+    <TextView
+        android:id="@+id/txtsoGiaylambai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:textSize="24sp"
+        android:padding="5dp"
+        android:layout_marginRight="10dp"/>
+
+</LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rcvDeThi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
+
+
 
 </LinearLayout>

@@ -82,9 +82,8 @@ public class BoDeThiActivity extends AppCompatActivity {
                                 }else  if(time.equals("GIUA_KY")){
                                     thoigian=45;
                                 }
-                                editor.putInt("MA_DT",ma_dt);
                                 editor.putInt("TIME_BODE",thoigian);
-                                editor.apply();
+                                editor.commit();
                                 listbode.add(new BoDeThi_Model(ma_dt,tenbode,thoigian));
                             } catch (JSONException e) {
                                 e.printStackTrace();
