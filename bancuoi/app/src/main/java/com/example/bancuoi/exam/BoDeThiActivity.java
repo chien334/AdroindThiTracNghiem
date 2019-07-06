@@ -1,5 +1,6 @@
 package com.example.bancuoi.exam;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +50,8 @@ public class BoDeThiActivity extends AppCompatActivity {
     private void getSession() {
         prefs = this.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         mahs= prefs.getInt("MA_HS",0);
-        mamh=prefs.getInt("MA_MH",0);
+        Intent intent = getIntent();
+        mamh = intent.getIntExtra("MA_MH",0);
     }
     private void customRCV() {
         LinearLayoutManager layoutManager= new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);

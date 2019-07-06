@@ -47,9 +47,7 @@ public class PointFragment extends Fragment {
         v = inflater.inflate(R.layout.point_fragment, container,false);
         // ten ham dat tieng anh
         findViewById();
-
         loadJson();
-
 
         return v;
     }
@@ -74,7 +72,8 @@ public class PointFragment extends Fragment {
                                 JSONObject objectRequest= response.getJSONObject(i);
                                 int id= objectRequest.getInt("MA_MH");
                                 String monhoc = objectRequest.getString("TEN_MH");
-                                _liMonHoc.add(new monHoc(id,monhoc));
+                                String GV= objectRequest.getString("HO_TEN_GV");
+                                _liMonHoc.add(new monHoc(id,monhoc,GV));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

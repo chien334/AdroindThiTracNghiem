@@ -39,13 +39,16 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamHolder>{
     public void onBindViewHolder(@NonNull ExamHolder examHolder, int i) {
         examHolder.txtmonhoc.setText(monHocs.get(i).getTenMonHoc());
         examHolder.imgHinhanh.setImageResource(R.drawable.hinhanh);
+        examHolder.tvGiaoVien.setText("Giáo viên \n"+monHocs.get(i).getTenGV());
 
         examHolder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
                 if(pos >= 0)
                 {
-                    context.startActivity(new Intent(context, BoDeThiActivity.class));
+                    Intent intent= new Intent(context,BoDeThiActivity.class);
+                    intent.putExtra("MA_MH",monHocs.get(i).getId());
+                    context.startActivity(intent);
                 }
                 else
                 {
@@ -63,7 +66,7 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamHolder>{
     }
 
     public class ExamHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView txtmonhoc;
+        private TextView txtmonhoc,tvGiaoVien;
         private ImageView imgHinhanh;
         private ConstraintLayout constraintLayout;
         private ItemClickListener itemClickListener;
@@ -72,6 +75,7 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamHolder>{
             super(itemView);
                 txtmonhoc=(TextView)itemView.findViewById(R.id.txtNameBoDe);
                 imgHinhanh=(ImageView)itemView.findViewById(R.id.imgBoDeThi);
+                tvGiaoVien= (TextView) itemView.findViewById(R.id.tvGiaoVien);
                 constraintLayout=(ConstraintLayout)itemView.findViewById(R.id.constraintItem);
                 itemView.setOnClickListener(this);
         }

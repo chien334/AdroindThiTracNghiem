@@ -38,7 +38,12 @@ public class BoDeThi_Adapter extends RecyclerView.Adapter<BoDeThi_Adapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.txtNameBoDe.setText(list.get(i).getTenDeThi());
+        String tendethi = list.get(i).getTenDeThi();
+        String chuoi1 = tendethi.substring(0,18);
+        int vitri = chuoi1.lastIndexOf(" ");
+        String dethi = tendethi.substring(0,vitri)+"\n"+tendethi.substring(vitri+1,tendethi.length());
+
+        viewHolder.txtNameBoDe.setText(dethi);
         viewHolder.imgHinhanh.setImageResource(R.drawable.hinhanh);
         viewHolder.txtThoiGianThi.setText(list.get(i).getTime() +"phút");
 
@@ -49,6 +54,8 @@ public class BoDeThi_Adapter extends RecyclerView.Adapter<BoDeThi_Adapter.ViewHo
                 {
                     Intent intent = new Intent(mContext,DeThiActivity.class);
                     intent.putExtra("MA_DE",list.get(i).getMade());
+                    intent.putExtra("SO_LUONG",list.size());
+                    intent.putExtra("THOI_GIAN",list.get(i).getTime());
                     mContext.startActivity(intent);
                 }
                 else

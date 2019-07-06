@@ -68,10 +68,9 @@ public class ExamFragment extends Fragment{
                                 JSONObject objectRequest= response.getJSONObject(i);
                                 int id= objectRequest.getInt("MA_MH");
                                 String monhoc = objectRequest.getString("TEN_MH");
+                                String gv = objectRequest.getString("HO_TEN_GV");
                                 SharedPreferences.Editor editor = prefs.edit();
-                                editor.putInt("MA_MH",id);
-                                editor.commit();
-                                _liMonHoc.add(new monHoc(id,monhoc));
+                                _liMonHoc.add(new monHoc(id,monhoc,gv));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

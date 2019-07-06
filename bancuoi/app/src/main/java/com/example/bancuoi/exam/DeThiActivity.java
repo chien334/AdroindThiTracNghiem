@@ -2,12 +2,15 @@ package com.example.bancuoi.exam;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bancuoi.Model.DeThi_Model;
 import com.example.bancuoi.R;
@@ -29,8 +32,12 @@ import static com.example.bancuoi.Service_API.BASE_URL;
 public class DeThiActivity extends AppCompatActivity {
     private CompositeDisposable mCompositeDisposable;
     private RecyclerView recyclerView;
-    //SharedPreferences prefs;
-    private int made;
+    private TextView tvPhut, tvGiay;
+    SharedPreferences prefs;
+    private int made,time;
+    private int giay=0;
+    private int phut ;
+    private int soluong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +49,43 @@ public class DeThiActivity extends AppCompatActivity {
         setRCV();
         getSession();
         loadJSONDeThi(made);
+        countTime();
     }
+
+    private void countTime() {
+        phut= time;
+        CountDownTimer countDownTimer= new CountDownTimer((time*60*1000),1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                tvPhut.setText(phut+"");
+                tvGiay.setText(giay+"");
+                giay--;
+                if(giay<=0){
+                    giay=59;
+                    phut =phut-1;
+                }
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        };
+        countDownTimer.start();
+    }
+
     private void getSession() {
+        prefs = this.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         Intent intent = getIntent();
         made = intent.getIntExtra("MA_DE",0);
-//        SharedPreferences.Editor editor = prefs.edit();
- //       editor.putInt("MA_DE",made);
- //       editor.apply();
+        soluong= intent.getIntExtra("SO_LUONG",0);
+        time= intent.getIntExtra("THOI_GIAN",0);
     }
     private void findViewById() {
         recyclerView = (RecyclerView)findViewById(R.id.rcvDeThi);
+        tvGiay= (TextView)findViewById(R.id.txtsoGiaylambai);
+        tvPhut=(TextView)findViewById(R.id.txtsophutlambai);
     }
     private void setRCV(){
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

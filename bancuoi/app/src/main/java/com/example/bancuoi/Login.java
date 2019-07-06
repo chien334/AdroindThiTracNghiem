@@ -1,5 +1,7 @@
 package com.example.bancuoi;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bancuoi.Model.Users;
+import com.example.bancuoi.exam.BoDeThiActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +36,7 @@ public class Login extends AppCompatActivity {
     private TextInputEditText txtUsername, txtPassWord;
     private List<Users> _listUser = new ArrayList<>();
     public static final String MY_PREFS_NAME = "MyPrefsFile";
-    private String url = BASE_URL+"/users";
+    private String url = BASE_URL+"users";
     SharedPreferences sharedPreferences;
     ConstraintLayout loginForm;
 
@@ -95,7 +98,20 @@ public class Login extends AppCompatActivity {
                                     Intent intent= new Intent(Login.this,MainActivity.class);
                                     startActivity(intent);
                                 }else {
-                                    Log.d("ABCKXMX", "onResponse: ");
+                                    AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
+                                    builder1.setTitle("Thông báo");
+//                                    builder1.setIcon(R)
+                                    builder1.setMessage("Tài khoản hoặc mật khẩu không đúng.\n Vui lòng kiểm tra lại");
+                                    builder1.setCancelable(true);
+                                    builder1.setPositiveButton("OK", new
+                                            DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    txtPassWord.setText("");
+                                                }
+                                            });
+                                    AlertDialog alertDialog = builder1.create();
+                                    alertDialog.show();
                                 }
                             }
                         },
