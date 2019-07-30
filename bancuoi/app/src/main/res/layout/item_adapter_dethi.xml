@@ -59,6 +59,7 @@
         android:text="Kết quả"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@id/radioGroup"
+        android:background="@drawable/custom_item_recycle"/>
 
 </android.support.constraint.ConstraintLayout>

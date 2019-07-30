@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.android.volley.Request;
@@ -34,6 +35,7 @@ public class infoFragment extends Fragment {
     private  View v;
     TextInputEditText txtName, txtAdress,txtPhuong_xa,txtQuan_huyen,txtTinh,txtInputDate,txtLop,txtKhoi;
     RadioButton rdBoy, rdGirl;
+    ImageView imgInfor;
     SharedPreferences prefs;
     @Nullable
     @Override
@@ -52,8 +54,10 @@ public class infoFragment extends Fragment {
             String gt=prefs.getString("GIOI_TINH_HS","");
             if(gt.equals("Nữ")){
                 rdGirl.setChecked(true);
+                imgInfor.setImageResource(R.drawable.girl);
             }else {
                 rdBoy.setChecked(true);
+                imgInfor.setImageResource(R.drawable.boy);
             }
             txtAdress.setText(prefs.getString("SO_NHA",""));
             txtKhoi.setText(prefs.getString("TEN_KHOI",""));
@@ -75,6 +79,7 @@ public class infoFragment extends Fragment {
         txtLop=(TextInputEditText)v.findViewById(R.id.text_KhoiLop);
         rdBoy = (RadioButton)v.findViewById(R.id.rdBoy);
         rdGirl = (RadioButton)v.findViewById(R.id.rdGirl);
+        imgInfor =(ImageView)v.findViewById(R.id.imgInfo);
     }
 
 

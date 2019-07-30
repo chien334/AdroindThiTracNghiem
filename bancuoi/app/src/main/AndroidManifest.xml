@@ -12,10 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".poinStudent.PointBoDe"></activity>
+        <activity android:name=".poinStudent.PointBoDe"
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".exam.BoDeThiActivity"
-            android:noHistory="true" />
+            android:noHistory="true"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
