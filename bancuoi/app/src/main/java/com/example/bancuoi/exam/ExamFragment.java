@@ -58,7 +58,7 @@ public class ExamFragment extends Fragment{
     private void loadJson() {
         RequestQueue queue= Volley.newRequestQueue(getActivity());
         getSession();
-        String url = BASE_URL+"examTest/";
+        String url = BASE_URL+"examtest/";
         JsonArrayRequest jsonArrayRequest= new JsonArrayRequest(Request.Method.GET, url+id, null,
                 new Response.Listener<JSONArray>() {
                     @Override

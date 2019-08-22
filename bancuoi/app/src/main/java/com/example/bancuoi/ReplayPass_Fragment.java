@@ -19,9 +19,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.bancuoi.Model.DoiMatKhau_Model;
 import com.google.gson.Gson;
 
@@ -58,6 +60,7 @@ public class ReplayPass_Fragment extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RequestQueue queue= Volley.newRequestQueue(getActivity());
                 String newpass= edNewPass.getText().toString().trim();
                 String replance= edReplancePass.getText().toString().trim();
                 if(newpass.equals(replance)){
@@ -82,6 +85,7 @@ public class ReplayPass_Fragment extends Fragment {
 
                         }
                     });
+                    queue.add(stringRequest);
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
                     builder1.setTitle("Thông báo");
                     builder1.setMessage("Đổi mật khẩu thành công");

@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new homeFragment();
                 break;
             case R.id.nav_make:
+                fragment = new gopY_fragment();
 
                 break;
             case  R.id.nav_replance:

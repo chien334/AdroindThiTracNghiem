@@ -208,7 +208,7 @@ public class Dethi_Adapter extends RecyclerView.Adapter<Dethi_Adapter.ViewHolder
             radioButton4 = (RadioButton)view.findViewById(R.id.radio_4);
             radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
             btnKQ = (Button) view.findViewById(R.id.btnKQ);
-            view.getScrollBarSize();
+//            view.getScrollBarSize();
 
         }
 
